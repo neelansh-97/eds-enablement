@@ -1,0 +1,81 @@
+.banner-container .banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.banner {
+  position: relative;
+  padding: 16px;
+  background-color: var(--banner-background-color, #3b63fb);
+}
+
+.banner .banner-image {
+  line-height: 0;
+}
+
+.banner .banner-image img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.banner .banner-content {
+  padding: 40px 24px;
+}
+
+.banner .banner-content h2 {
+  margin-top: 0;
+}
+
+.banner .banner-content p {
+  margin: 0;
+}
+
+/* text only (no image): plain content panel */
+.banner:not(:has(.banner-image)) .banner-content {
+  text-align: center;
+}
+
+/* text-only banner with no heading: lead with the body copy */
+.banner:not(:has(.banner-image)) .banner-content:not(:has(h2)) p {
+  font-size: var(--body-font-size-m);
+}
+
+/* image only: full-bleed image, no overlay styling needed */
+.banner:has(.banner-image):not(:has(.banner-content)) .banner-image img {
+  min-height: 200px;
+}
+
+/* image + text: overlay the content on top of the image */
+.banner:has(.banner-image):has(.banner-content) {
+  display: grid;
+  min-height: 300px;
+}
+
+.banner:has(.banner-image):has(.banner-content) .banner-image {
+  grid-area: 1 / 1;
+  height: 100%;
+}
+
+.banner:has(.banner-image):has(.banner-content) .banner-image img {
+  height: 100%;
+  min-height: 300px;
+}
+
+.banner:has(.banner-image):has(.banner-content) .banner-content {
+  grid-area: 1 / 1;
+  align-self: end;
+  z-index: 1;
+  color: white;
+  background: linear-gradient(to top, rgb(0 0 0 / 70%), rgb(0 0 0 / 0%) 80%);
+}
+
+.banner:has(.banner-image):has(.banner-content) h2 {
+  color: inherit;
+}
+
+@media (width >= 600px) {
+  .banner:has(.banner-image):has(.banner-content) .banner-content {
+    padding: 40px 32px;
+  }
+}
